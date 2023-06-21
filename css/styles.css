@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15%;
+    height: 70px;
+    line-height: 70px;
+    background: #ffffff;
+    z-index: 9;
+}
+nav .navbar-despliege{
+    display: none;
+    padding: 10px 0px;
+}
+
+nav .navbar-brand {
+    color: #ffffff;
+    padding: 10px 0px;
+    /* font-size: 28px;
+    font-weight: 500;
+    letter-spacing: .5px; */
+}
+
+nav .nav-list {
+    display: flex;
+}
+
+nav .nav-list .nav-item {
+    cursor: pointer;
+    height: 100%;
+    padding: 0 30px;
+    transition: .4s;
+}
+
+nav .nav-list .nav-item:hover {
+    background: #b69955;
+}
+
+nav .nav-list .nav-link {
+    color: #502314;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+@media (max-width: 935px) {
+
+    nav {
+        padding: 0 2rem;
+    }
+
+    nav .nav-list .nav-item {
+        padding: 0 20px;
+    }
+
+}
+
+@media (max-width: 675px) {
+
+    nav .nav-list {
+        display: grid;
+        position: absolute;
+        background: #FFBD59;
+        width: 100%;
+        top: 70px;
+        left: 0;
+        transform: translateY(-100%);
+        z-index: -1;
+        transition: .6s;
+    }
+
+    nav .nav-list .nav-item {
+        padding-left: 35px;
+    }
+
+    nav .navbar-toggler {
+        display: grid !important;
+    }
+
+}
+
+nav .navbar-toggler {
+    display: none;
+    height: min-content;
+    margin: 18px -10px 0 0;
+    cursor: pointer;
+}
+
+nav .navbar-toggler .bar {
+    width: 35px;
+    height: 4px;
+    margin-bottom: 10px;
+    background: #502314;
+    border-radius: 2px;
+    transition: .4s;
+}
+/* Conversiones del Input */
+input {
+    display: none;
+}
+input:checked ~ nav {
+    background-color: #FFBD59;
+}
+input:checked ~ nav .navbar-brand {
+    display: none;
+}
+input:checked ~ nav .navbar-despliege {
+    display: block;
+}
+input:checked ~ nav .nav-list {
+    transform: translateY(0);
+    z-index: 1;
+}
+
+input:checked ~ nav .navbar-toggler {
+    margin-top: 35px;
+}
+
+input:checked ~ nav .navbar-toggler .bar:nth-child(1) {
+    position: absolute;
+    transform: rotate(45deg);
+}
+
+input:checked ~ nav .navbar-toggler .bar:nth-child(2) {
+    display: none;
+}
+
+input:checked ~ nav .navbar-toggler .bar:nth-child(3) {
+    transform: rotate(-45deg);
+}
+/* ========================================= */
+/* Main */
+/* ========================================= */
+main .welcome {
+    font-family: sans-serif;
+    padding: 0 10%;
+}
+main .welcome h1{
+    font-size: 24px;
+}
+
+main .card-principal{
+    position: relative;
+    margin: 10%;
+    background-color: #614942;
+    height: 150px;
+    border-radius: 10px ;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: -2;
+}
+main .card-principal .description-1{
+    padding-bottom: 20%;
+}
+main .card-principal .description-1 h1{
+    font-size: 24px;  
+    color: #FFBD59; 
+}
+main .card-principal .description-1 h2{
+    font-size: 10px;
+    color: #ffffff;  
+}
+main .card-principal .sec-img{
+    display: flex;
+    align-items: self-end;
+}
+main .card-principal .sec-img .img-card{
+    width: 210px;
+    padding-bottom: 5% ;
+    padding-left: 0;
+}
+main .card-principal .add{
+    background-color: #FFFFFF ;
+    height: 30px;
+    width: 130px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 5%;
+    bottom: 10%;
+}
+main .card-principal .add p{
+    font-size: 10px;
+}
+main .card-principal .add strong{
+    font-size: 16px;
+}
+main .card-principal .like{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFDDAA ;
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    position: absolute;
+    right: 3%;
+    top: 5%;
+    z-index: -2;
+}
+/* ========================================= */
+/* Footer */
+/* ========================================= */
+
+footer .footer-mobile{
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-between; 
+    gap: 1rem;
+    background-color: #b69955;
+    border-radius: 20px;
+    margin: 10%;
+    position: absolute;
+    bottom: 16px;
+}
