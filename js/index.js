@@ -1,3 +1,70 @@
+// Creacion de los cards--------------------->>>
+// Manipulacion del DOM---------------------->>>
+// let burguerContainer = []
+
+// burguers.forEach((item)=> { 
+// 	let content = document.createElement("div");
+// 	content.className = "item";
+// 	content.innerHTML = `
+// 		<figure>
+// 			<img src="${item.img}">
+// 		</figure>
+// 		<div class="info-product">
+// 			<h2>${item.nombre}</h2>
+// 			<h3>Precio</h3>
+// 			<p class="price">$${item.precio}</p>
+// 			<button class="btn-add-cart" id="${item.id}">Agregar</button>
+// 		</div>
+// 	`;
+// 	// Aclado a un elemento del DOM
+// 	ContentCards.append(content);
+// })
+
+// ------------------------------------------------------->>>
+// Busqueda de cards mediante map------------------------->>>
+// ------------------------------------------------------->>>
+
+const categories = [...new Set(burguers.map((item) => { return item }))]
+
+document.getElementById('searchBar').addEventListener('keyup', (e) => {
+    const searchData = e.target.value.toLowerCase();
+    const filteredData = categories.filter((item) => {
+        return (
+            item.nombre.toLowerCase().includes(searchData)
+        )
+    })
+    displayItem(filteredData)
+});
+// ------------------------------------------------------->>>
+// Creacion de los cards mediante map--------------------->>>
+// ------------------------------------------------------->>>
+const displayItem = (items) => {
+	document.getElementById('containerBurguer').innerHTML = items.map((item) => {
+		let { id, nombre, precio, img, altImg  } = item;
+		return (
+			` 
+				<div class='item'>
+			  		<figure class="card">
+			  			<img src="${img}" alt="${altImg}">
+			  		</figure>
+			 		<div class="info-product">
+			  			<h2>${nombre}</h2>
+			  			<h3>Precio</h3>
+			  			<p class="price">$${precio}</p>
+			  			<button class="btn-add-cart" id="${id}">Agregar</button>
+					</div>
+				</div>
+			`
+		)
+	}).join('')
+};
+displayItem(categories);
+
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// Creacion de interaccion de carrito de compras--------------------->>>
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 const btnCart = document.querySelector('.container-cart-icon');
 const containerCartProducts = document.querySelector(
 	'.container-cart-products'
@@ -125,3 +192,4 @@ const showHTML = () => {
 	valorTotal.innerText = `$${total}`;
 	countProducts.innerText = totalOfProducts;
 };
+

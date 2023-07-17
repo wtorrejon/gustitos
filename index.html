@@ -7,8 +7,21 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0"
 		/>
+		<!-- ============================================================================================================================ -->
+        <!-- Googlefonts Material Icons-->
+        <!-- ============================================================================================================================ -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
+        <!-- ============================================================================================================================ -->
+        <!-- Favicon -->
+        <!-- ============================================================================================================================ -->
 		<link rel="shortcut icon" href="./assets/img/logo/logo los gustitos.svg" type="image/x-icon">
 		<title>Los gustitos</title>
+        <!-- ============================================================================================================================ -->
+        <!-- link CSS del proyecto -->
+        <!-- ============================================================================================================================ -->
 		<link rel="stylesheet" href="./css/styles.css" />
 	</head>
 	<body>
@@ -91,95 +104,13 @@
 			
 		</header>
 		<main>
+			<div class="searchBar">
+				<input placeholder="¿Que quieres comer hoy?" id="searchBar" name="searchBar" type="text">
+				<i class="fa-solid" id="btn"></i>
+			</div>
 			<section class="section-hamburguers">
 				<h1>HAMBURGUESAS - Las de toda la vida</h1>
-				<div class="container-items">
-					<!-- Grid cards -->
-					<div class="item">
-						<figure>
-							<img 
-								src="./assets/img/hamburguesas/LA-RECATADA.avif" 
-								alt="LA-RECATADA"
-							>
-						</figure>
-						<div class="info-product">
-							<h2>La Recatada</h2>
-							<h3>Precio</h3>
-							<p class="price">$8.00</p>
-							<button class="btn-add-cart">Agregar</button>
-						</div>
-					</div>
-					<div class="item">
-						<figure>
-							<img 
-								src="./assets/img/hamburguesas/LA-RESBALOSA.avif" 
-								alt="LA-RESBALOSA"
-							>
-						</figure>
-						<div class="info-product">
-							<h2>La Resbalosa</h2>
-							<h3>Precio</h3>
-							<p class="price">$9.00</p>
-							<button class="btn-add-cart">Agregar</button>
-						</div>
-					</div>
-					<div class="item">
-						<figure>
-							<img 
-								src="./assets/img/hamburguesas/LA-TEJANA.avif" 
-								alt="LA-TEJANA"
-							>
-						</figure>
-						<div class="info-product">
-							<h2>La Tejana</h2>
-							<h3>Precio</h3>
-							<p class="price">$12.00</p>
-							<button class="btn-add-cart">Agregar</button>
-						</div>
-					</div>
-					<div class="item">
-						<figure>
-							<img 
-								src="./assets/img/hamburguesas/LA-VENGADORA.avif" 
-								alt="LA-VENGADORA"
-							>
-						</figure>
-						<div class="info-product">
-							<h2>La Vengadora</h2>
-							<h3>Precio</h3>
-							<p class="price">$13.00</p>
-							<button class="btn-add-cart">Agregar</button>
-						</div>
-					</div>
-					<div class="item">
-						<figure>
-							<img 
-								src="./assets/img/hamburguesas/LA-GOLOSA.avif" 
-								alt="LA-GOLOSA"
-							>
-						</figure>
-						<div class="info-product">
-							<h2>La Golosa</h2>
-							<h3>Precio</h3>
-							<p class="price">$22.00</p>
-							<button class="btn-add-cart">Agregar</button>
-						</div>
-					</div>
-					<div class="item">
-						<figure>
-							<img 
-								src="./assets/img/hamburguesas/LA-POLLERA.avif" 
-								alt="LA-POLLERA"
-							>
-						</figure>
-						<div class="info-product">
-							<h2>La Golosa</h2>
-							<h3>Precio</h3>
-							<p class="price">$8.00</p>
-							<button class="btn-add-cart">Agregar</button>
-						</div>
-					</div>
-				</div>
+				<div class="container-items" id="containerBurguer"></div>
 			</section>
 		</main>
 		<footer>
@@ -328,6 +259,8 @@
 				</div>
 			</div>
 		</footer>
+		<!-- <script src="https://kit.fontawesome.com/e8fa2e31b4.js" crossorigin="anonymous"></script> -->
+		<script src="./js/products.js"></script>
 		<script src="./js/index.js"></script>
 	</body>
 </html>
