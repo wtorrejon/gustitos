@@ -23,6 +23,7 @@
         <!-- link CSS del proyecto -->
         <!-- ============================================================================================================================ -->
 		<link rel="stylesheet" href="./css/styles.css" />
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	</head>
 	<body>
 		<header>
@@ -104,10 +105,17 @@
 			
 		</header>
 		<main>
-			<div class="searchBar">
-				<input placeholder="¿Que quieres comer hoy?" id="searchBar" name="searchBar" type="text">
-				<i class="fa-solid" id="btn"></i>
+			<div class="section-search">
+				<div class="searchBar">
+					<input placeholder="¿Que quieres comer hoy?" id="searchBar" name="searchBar" type="text">
+					<i class="fa-solid" id="btn"></i>
+				</div>
+				<div>
+					<button class="btn-orden" id="btnMenorMayor">Precio de Menor a Mayor</button>
+					<button class="btn-orden" id="btnMayorMenor">Precio de Mayor a Menor</button>
+				</div>
 			</div>
+			
 			<section class="section-hamburguers">
 				<h1>HAMBURGUESAS - Las de toda la vida</h1>
 				<div class="container-items" id="containerBurguer"></div>
@@ -260,7 +268,7 @@
 			</div>
 		</footer>
 		<!-- <script src="https://kit.fontawesome.com/e8fa2e31b4.js" crossorigin="anonymous"></script> -->
-		<script src="./js/products.js"></script>
-		<script src="./js/index.js"></script>
+		<script type="module" src="./js/products.js"></script>
+		<script type="module" src="./js/index.js"></script>
 	</body>
 </html>

@@ -1,0 +1,13 @@
+[
+    {"id":1,"nombre":"La Recatada","precio":8,"img":"./assets/img/hamburguesas/LA-RECATADA.avif","altImg":"LA-RECATADA"},
+    {"id":2,"nombre":"La Resbalosa","precio":9,"img":"./assets/img/hamburguesas/LA-RESBALOSA.avif","altImg":"LA-RESBALOSA"},
+    {"id":3,"nombre":"La Tejana","precio":12,"img":"./assets/img/hamburguesas/LA-TEJANA.avif","altImg":"LA-TEJANA"},
+    {"id":4,"nombre":"La Vengadora","precio":13,"img":"./assets/img/hamburguesas/LA-VENGADORA.avif","altImg":"LA-VENGADORA"},
+    {"id":5,"nombre":"La Golosa","precio":22.5,"img":"./assets/img/hamburguesas/LA-GOLOSA.avif","altImg":"LA-GOLOSA"},
+    {"id":6,"nombre":"La Pollera","precio":8,"img":"./assets/img/hamburguesas/LA-POLLERA.avif","altImg":"LA-POLLERA"},
+    {"id":7,"nombre":"Nuggets de Pollo","precio":10.5,"img":"./assets/img/hamburguesas/10_NUGGETS.avif","altImg":"10-NUGGETS"},
+    {"id":8,"nombre":"1 Pie de Manzana","precio":5.5,"img":"./assets/img/hamburguesas/PIE_DE_MANZANA_V1.avif","altImg":"PIE_DE_MANZANA_V1"},
+    {"id":9,"nombre":"3 Pie de Manzana","precio":11.0,"img":"./assets/img/hamburguesas/PIE_DE_MANZANA_V3.png","altImg":"PIE_DE_MANZANA_V3"},
+    {"id":10,"nombre":"Franchute Cheese","precio":12.5,"img":"./assets/img/hamburguesas/XT_STEAKHOUSE_202304261739111047.avif","altImg":"FRANCHUTE-CHEESE"},
+    {"id":11,"nombre":"Queso & Tocino","precio":12.5,"img":"./assets/img/hamburguesas/QUESO_TOCINO.avif","altImg":"QUESO_TOCINO"}
+]

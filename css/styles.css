@@ -167,6 +167,26 @@ header .header-container-flex{
 /* Main */
 /*=========================================================*/
 /*----------- Seccion Buscar -----------*/
+.section-search{
+    display: flex;
+    align-items: center;
+
+
+}
+.section-search div{
+    margin-left: 10px;
+}
+.btn-orden{
+    height: 30px;
+    width: 250px;
+    border: solid 1px #d62300;
+    border-radius: 10px;
+    background-color: #FEFBF2;
+    color: #d62300;
+    margin: 10px;
+font-size: 14px;font-weight: bold;
+}
+
 .searchBar {
     width: 200px;
     margin-left: 16px;

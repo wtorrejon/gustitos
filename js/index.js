@@ -1,29 +1,15 @@
 // Creacion de los cards--------------------->>>
 // Manipulacion del DOM---------------------->>>
-// let burguerContainer = []
-
-// burguers.forEach((item)=> { 
-// 	let content = document.createElement("div");
-// 	content.className = "item";
-// 	content.innerHTML = `
-// 		<figure>
-// 			<img src="${item.img}">
-// 		</figure>
-// 		<div class="info-product">
-// 			<h2>${item.nombre}</h2>
-// 			<h3>Precio</h3>
-// 			<p class="price">$${item.precio}</p>
-// 			<button class="btn-add-cart" id="${item.id}">Agregar</button>
-// 		</div>
-// 	`;
-// 	// Aclado a un elemento del DOM
-// 	ContentCards.append(content);
-// })
-
 // ------------------------------------------------------->>>
 // Busqueda de cards mediante map------------------------->>>
 // ------------------------------------------------------->>>
 
+// importamos los datos del JSON con import, previamente se le coloca Type al SRC en el html
+import data from './products.json' assert {type:"json"};
+console.log(data);
+// declaramos el objeto burgers y copiamos con spread lo que tarjimos del JSON (data), ahora burguers contiene todos los arreglos que necesitamos
+const burguers = [...data];
+// de la misma manera, 
 const categories = [...new Set(burguers.map((item) => { return item }))]
 
 document.getElementById('searchBar').addEventListener('keyup', (e) => {
@@ -50,7 +36,7 @@ const displayItem = (items) => {
 			 		<div class="info-product">
 			  			<h2>${nombre}</h2>
 			  			<h3>Precio</h3>
-			  			<p class="price">$${precio}</p>
+			  			<p>$<span class="price">${precio.toFixed(2)}</span></p>
 			  			<button class="btn-add-cart" id="${id}">Agregar</button>
 					</div>
 				</div>
@@ -59,6 +45,37 @@ const displayItem = (items) => {
 	}).join('')
 };
 displayItem(categories);
+
+// Boton ordenar de menor a mayor------------------------->>>
+
+let btnMenorMayor = document.getElementById("btnMenorMayor")
+
+btnMenorMayor.addEventListener('click', () => {
+	const orderedArray = [...burguers].sort(function(productA, productB) {
+		if (productA.precio > productB.precio) {
+			return 1;
+		} 
+		else {
+			return -1;
+		}
+	})
+	displayItem(orderedArray);
+})
+
+// Boton ordenar de mayor a menor------------------------->>>
+let btnMayorMenor = document.getElementById("btnMayorMenor")
+
+btnMayorMenor.addEventListener('click', () => {
+	const orderedArray = [...burguers].sort(function(productA, productB) {
+		if (productA.precio < productB.precio) {
+			return 1;
+		} 
+		else {
+			return -1;
+		}
+	})
+	displayItem(orderedArray);
+})
 
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -75,6 +92,7 @@ btnCart.addEventListener('click', () => {
 });
 
 /* ========================= */
+
 const cartInfo = document.querySelector('.cart-product');
 const rowProduct = document.querySelector('.row-product');
 
@@ -90,9 +108,11 @@ const countProducts = document.querySelector('#contador-productos');
 
 const cartEmpty = document.querySelector('.cart-empty');
 const cartTotal = document.querySelector('.cart-total');
+const productAdd = document.querySelector('.product-add');
 
 productsList.addEventListener('click', e => {
 	if (e.target.classList.contains('btn-add-cart')) {
+		
 		const product = e.target.parentElement;
 
 		const infoProduct = {
@@ -100,7 +120,7 @@ productsList.addEventListener('click', e => {
 			title: product.querySelector('h2').textContent,
 			price: product.querySelector('p').textContent,
 		};
-
+			
 		const exits = allProducts.some(
 			product => product.title === infoProduct.title
 		);
@@ -192,4 +212,8 @@ const showHTML = () => {
 	valorTotal.innerText = `$${total}`;
 	countProducts.innerText = totalOfProducts;
 };
+
+let precios = document.querySelectorAll(".price")
+console.log(precios)
+
 
