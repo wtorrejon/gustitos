@@ -1,32 +1,14 @@
 // Creacion de los cards--------------------->>>
 // Manipulacion del DOM---------------------->>>
-// ------------------------------------------------------->>>
-// Busqueda de cards mediante map------------------------->>>
-// ------------------------------------------------------->>>
 
-// importamos los datos del JSON con import, previamente se le coloca Type al SRC en el html
-import data from './products.json' assert {type:"json"};
-console.log(data);
-// declaramos el objeto burgers y copiamos con spread lo que tarjimos del JSON (data), ahora burguers contiene todos los arreglos que necesitamos
-const burguers = [...data];
-// de la misma manera, 
-const categories = [...new Set(burguers.map((item) => { return item }))]
+let burguers = []
+let categories = []
+let sortValue = 1
 
-document.getElementById('searchBar').addEventListener('keyup', (e) => {
-    const searchData = e.target.value.toLowerCase();
-    const filteredData = categories.filter((item) => {
-        return (
-            item.nombre.toLowerCase().includes(searchData)
-        )
-    })
-    displayItem(filteredData)
-});
-// ------------------------------------------------------->>>
-// Creacion de los cards mediante map--------------------->>>
-// ------------------------------------------------------->>>
+// Funcion para renderizar las cards
 const displayItem = (items) => {
 	document.getElementById('containerBurguer').innerHTML = items.map((item) => {
-		let { id, nombre, precio, img, altImg  } = item;
+		let { id, nombre, precio, img, altImg } = item;
 		return (
 			` 
 				<div class='item'>
@@ -37,14 +19,48 @@ const displayItem = (items) => {
 			  			<h2>${nombre}</h2>
 			  			<h3>Precio</h3>
 			  			<p>$<span class="price">${precio.toFixed(2)}</span></p>
-			  			<button class="btn-add-cart" id="${id}">Agregar</button>
+			  			<button class="btn-add-cart" id="btn-add">Agregar</button>
 					</div>
 				</div>
 			`
 		)
 	}).join('')
 };
-displayItem(categories);
+// Traemos el JSON mediante funcion asincrona
+const loadItems = async () => {
+	const response = await fetch('../js/products.json')
+	const data = await response.json();
+	burguers = [...data]
+	categories = [...new Set(burguers.map((item) => { return item }))]
+	displayItem(categories)
+}
+
+loadItems()
+
+// ------------------------------------------------------->>>
+// Busqueda de segun caracteres--------------------------->>>
+// ------------------------------------------------------->>>
+// Seleccionamos el elemento searchBar del HTML, y adicionameos el evento keyup 
+// ('keyup', (e) => { ... }): Esto agrega un evento de escucha al elemento 
+// seleccionado. El evento que se escucha aquí es 'keyup', lo que significa 
+// que se activará cada vez que el usuario suelte una tecla después de presionarla. 
+// Cuando este evento se dispare, se ejecutará la función proporcionada como segundo argumento.
+
+document.getElementById('searchBar').addEventListener('keyup', (e) => {
+	// convertimos todos los caracteres en minuscula para que nuestro searchbar no sea key-sensitive
+	const searchData = e.target.value.toLowerCase();
+	const filteredData = categories.filter((item) => {
+		return (
+			item.nombre.toLowerCase().includes(searchData)
+		)
+	})
+	displayItem(filteredData)
+});
+// ------------------------------------------------------->>>
+// Creacion de los cards mediante map--------------------->>>
+// ------------------------------------------------------->>>
+
+// displayItem(categories);
 
 // Boton ordenar de menor a mayor------------------------->>>
 
@@ -76,7 +92,6 @@ btnMayorMenor.addEventListener('click', () => {
 	})
 	displayItem(orderedArray);
 })
-
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Creacion de interaccion de carrito de compras--------------------->>>
@@ -112,7 +127,6 @@ const productAdd = document.querySelector('.product-add');
 
 productsList.addEventListener('click', e => {
 	if (e.target.classList.contains('btn-add-cart')) {
-		
 		const product = e.target.parentElement;
 
 		const infoProduct = {
@@ -209,7 +223,7 @@ const showHTML = () => {
 		totalOfProducts = totalOfProducts + product.quantity;
 	});
 
-	valorTotal.innerText = `$${total}`;
+	valorTotal.innerText = `$${total.toFixed(2)}`;
 	countProducts.innerText = totalOfProducts;
 };
 
