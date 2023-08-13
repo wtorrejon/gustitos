@@ -19,13 +19,17 @@ const displayItem = (items) => {
 			  			<h2>${nombre}</h2>
 			  			<h3>Precio</h3>
 			  			<p>$<span class="price">${precio.toFixed(2)}</span></p>
-			  			<button class="btn-add-cart" id="btn-add">Agregar</button>
+			  			<button class="btn-add-cart" id="${id}">Agregar</button>
 					</div>
 				</div>
 			`
 		)
+		
 	}).join('')
+	
+	
 };
+
 // Traemos el JSON mediante funcion asincrona
 const loadItems = async () => {
 	const response = await fetch('../js/products.json')
@@ -102,9 +106,15 @@ const containerCartProducts = document.querySelector(
 	'.container-cart-products'
 );
 
+
+
 btnCart.addEventListener('click', () => {
 	containerCartProducts.classList.toggle('hidden-cart');
 });
+
+// ############################################################
+// ############################################################
+
 
 /* ========================= */
 
@@ -126,9 +136,22 @@ const cartTotal = document.querySelector('.cart-total');
 const productAdd = document.querySelector('.product-add');
 
 productsList.addEventListener('click', e => {
-	if (e.target.classList.contains('btn-add-cart')) {
-		const product = e.target.parentElement;
 
+	if (e.target.classList.contains('btn-add-cart')) {		
+		/*############################################################*/
+		/*##                      Sweet Alert                       ##*/
+		/*############################################################*/
+		Swal.fire({
+			position: 'top-end',
+			icon: 'success',
+			title: 'Su producto ha sido agregado correctamente',
+			showConfirmButton: false,
+			timer: 1500
+		})
+		/*############################################################*/
+		/*##                     Agregar Productos                  ##*/
+		/*############################################################*/
+		const product = e.target.parentElement;
 		const infoProduct = {
 			quantity: 1,
 			title: product.querySelector('h2').textContent,
@@ -138,7 +161,9 @@ productsList.addEventListener('click', e => {
 		const exits = allProducts.some(
 			product => product.title === infoProduct.title
 		);
-
+		/*############################################################*/
+		/*##              Agregar Productos existentes              ##*/
+		/*############################################################*/
 		if (exits) {
 			const products = allProducts.map(product => {
 				if (product.title === infoProduct.title) {
@@ -155,7 +180,18 @@ productsList.addEventListener('click', e => {
 
 		showHTML();
 	}
+	
 });
+
+
+
+
+
+
+
+
+
+/* ========================= */
 
 rowProduct.addEventListener('click', e => {
 	if (e.target.classList.contains('icon-close')) {
@@ -230,4 +266,5 @@ const showHTML = () => {
 let precios = document.querySelectorAll(".price")
 console.log(precios)
 
+// ========================================
 
