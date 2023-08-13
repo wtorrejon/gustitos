@@ -182,19 +182,20 @@ productsList.addEventListener('click', e => {
 	}
 	
 });
-
-
-
-
-
-
-
-
-
-/* ========================= */
-
+/*####################################################################*/
 rowProduct.addEventListener('click', e => {
 	if (e.target.classList.contains('icon-close')) {
+		/*############################################################*/
+		/*##                      Sweet Alert                       ##*/
+		/*############################################################*/
+		Swal.fire({
+			position: 'top-end',
+			icon: 'success',
+			title: 'Su producto se ha eliminado correctamente',
+			showConfirmButton: false,
+			timer: 1500
+		})
+		/*############################################################*/
 		const product = e.target.parentElement;
 		const title = product.querySelector('p').textContent;
 
